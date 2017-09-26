@@ -1209,58 +1209,76 @@ process.umask = function() { return 0; };
 
 },{}],5:[function(require,module,exports){
 var page = require('page');
+var template = require('./template');
 
 var main = document.getElementById('main-container');
-console.log(main);
 
 page('/', function(ctx, next){
-    main.innerHTML = `<div class="container">
-    <div class="row">
-      <div class="col s10 push-s1">
-        <div class="row">
-          <div class="col m5 hide-on-small-only">
-            <img class="iphone" src="iphone.png" />
-          </div>
-          <div class="col s12 m7">
-            <div class="row">
-              <div class="signup-box">
-                <h1 class="platzigram">Platzigram</h1>
-                <form class="signup-form">
-                  <h2>Regístrate para ver fotos de tus amigos estudiando en Platzi</h2>
-                  <div class="section">
-                    <a class="btn btn-fb hide-on-small-only">Iniciar sesión con Facebook</a>
-                    <a class="btn btn-fb hide-on-med-and-up">Iniciar sesión</a>
-                  </div>
-                  <div class="divider"></div>
-                  <div class="section">
-                    <input type="email" name="email" placeholder="Correo electrónico"></input>
-                    <input type="text" name="name" placeholder="Nombre completo"></input>
-                    <input type="text" name="username" placeholder="Nombre de usuario"></input>
-                    <input type="password" name="password" placeholder="Contraseña"></input>
-                    <button class="btn waves-effect waves-light btn-signup" type="submit">Regístrate</button>
-                  </div>
-                </form>
-              </div>
+    main.innerHTML = template;
+});
+
+page();
+},{"./template":6,"page":2}],6:[function(require,module,exports){
+module.exports = `
+    <div class="container">
+        hola este es solo un texto de prueba
+        <a href="/signup"> Signup </a>
+    </div>
+`;
+},{}],7:[function(require,module,exports){
+var page = require('page');
+
+require('./home');
+require('./signup');
+
+page();
+},{"./home":5,"./signup":8,"page":2}],8:[function(require,module,exports){
+var page = require('page');
+var template = require('./template');
+
+var main = document.getElementById('main-container');
+
+page('/signup', function(ctx, next){
+    main.innerHTML = template;
+});
+},{"./template":9,"page":2}],9:[function(require,module,exports){
+module.exports = `
+<div class="container">
+  <div class="row">
+    <div class="col s10 push-s1">
+      <div class="row">
+        <div class="col m5 hide-on-small-only">
+          <img class="iphone" src="iphone.png" />
+        </div>
+        <div class="col s12 m7">
+          <div class="row">
+            <div class="signup-box">
+              <h1 class="platzigram">Platzigram</h1>
+              <form class="signup-form">
+                <h2>Regístrate para ver fotos de tus amigos estudiando en Platzi</h2>
+                <div class="section">
+                  <a class="btn btn-fb hide-on-small-only">Iniciar sesión con Facebook</a>
+                  <a class="btn btn-fb hide-on-med-and-up">Iniciar sesión</a>
+                </div>
+                <div class="divider"></div>
+                <div class="section">
+                  <input type="email" name="email" placeholder="Correo electrónico"></input>
+                  <input type="text" name="name" placeholder="Nombre completo"></input>
+                  <input type="text" name="username" placeholder="Nombre de usuario"></input>
+                  <input type="password" name="password" placeholder="Contraseña"></input>
+                  <button class="btn waves-effect waves-light btn-signup" type="submit">Regístrate</button>
+                </div>
+              </form>
             </div>
-            <div class="row">
-              <div class="login-box">
-                ¿Tienes una cuenta? <a href="/signup">Entrar</a>
-              </div>
+          </div>
+          <div class="row">
+            <div class="login-box">
+              ¿Tienes una cuenta? <a href="/">Entrar</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>`;
-});
-
-page('/signup', function(ctx, next){
-    main.innerHTML = 'Signup <a href="/"> Home </a>';
-});
-
-page('/signin', function(ctx, next){
-    main.innerHTML = 'Signin<a href="/"> Home </a>';
-});
-
-page();
-},{"page":2}]},{},[5]);
+  </div>
+</div>`;
+},{}]},{},[7]);
