@@ -34,7 +34,7 @@ page('/', function(ctx, next){
             </div>
             <div class="row">
               <div class="login-box">
-                ¿Tienes una cuenta? <a href="/signin">Entrar</a>
+                ¿Tienes una cuenta? <a href="/signup">Entrar</a>
               </div>
             </div>
           </div>
