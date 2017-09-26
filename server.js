@@ -11,6 +11,14 @@ app.use(express.static('public'));
 app.get('/', function (req, res) {
   //cuando entre al index, le muestra al cliente 'Hola Mundo'
   res.render('index');
+});
+
+app.get('/signup', function (req, res) {
+  res.render('index');
+})
+
+app.get('/signin', function (req, res) {
+  res.render('index');
 })
 
 //Se inicializa el puerto para que escuche por el puerto 3000

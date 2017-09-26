@@ -12,7 +12,8 @@
   "author": "Jose D.",
   "dependencies": {
     "express": "^4.13.4",
-    "materialize-css": "^0.100.2"
+    "materialize-css": "^0.100.2",
+    "page": "^1.7.1"
   },
   "devDependencies": {
     "browserify": "^14.4.0",
