@@ -6917,7 +6917,10 @@ body {
   font-family: Montserrat; }
 
 #main-container {
-  margin: 30px auto; }
+  margin: 0px auto 30px; }
+
+.m-top {
+  margin-top: 30px; }
 
 .iphone {
   max-width: 100%; }
@@ -6934,9 +6937,16 @@ body {
   padding: 10px 0;
   text-align: center; }
 
-.signup-box .platzigram {
+.platzigram {
   font-family: 'Oleo Script';
-  font-size: 42px; }
+  font-size: 42px;
+  color: #125688 !important; }
+
+.header {
+  background-color: white;
+  border-bottom: 1px solid #125688; }
+  .header i {
+    color: #125688 !important; }
 
 .signup-form {
   width: 65%;

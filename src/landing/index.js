@@ -1,6 +1,6 @@
 module.exports = function landing(box){
   return  `
-    <div class="container">
+    <div class="container m-top">
         <div class="row">
             <div class="col s10 push-s1">
                 <div class="row">

@@ -1219,13 +1219,20 @@ page('/', function(ctx, next){
 
 page();
 },{"./template":6,"page":2}],6:[function(require,module,exports){
-module.exports = `
-    <div class="container">
-        hola este es solo un texto de prueba
-        <a href="/signup"> Signup </a>
+var layout = require('../layout');
+
+var template = `
+<div class="container timeline">
+    <div class="row">
+        <div class="col s12 m7 offset-m2 l6 offset-l3">
+            aca van las cards
+        </div>
     </div>
-`;
-},{}],7:[function(require,module,exports){
+</div>
+`
+
+module.exports = layout(template);
+},{"../layout":9}],7:[function(require,module,exports){
 var page = require('page');
 
 
@@ -1234,10 +1241,10 @@ require('./signin/');
 require('./home');
 
 page();
-},{"./home":5,"./signin/":9,"./signup":11,"page":2}],8:[function(require,module,exports){
+},{"./home":5,"./signin/":10,"./signup":12,"page":2}],8:[function(require,module,exports){
 module.exports = function landing(box){
   return  `
-    <div class="container">
+    <div class="container m-top">
         <div class="row">
             <div class="col s10 push-s1">
                 <div class="row">
@@ -1252,6 +1259,39 @@ module.exports = function landing(box){
     `;
 } 
 },{}],9:[function(require,module,exports){
+
+module.exports = function (content){
+    return `
+<nav class="header">
+<div class="nav-wrapper">
+    <div class="container">
+        
+        <div class="row">
+            <div class="col s7 m7">
+                <a href="/" class="brand-logo platzigram">Platzigram</a>
+            </div>
+            <div class="col s3 offset-s2 m2 offset-m3">
+                <ul id="nav-mobile" class="right">
+                    <li><a class="dropdown-button" href="#" data-activates="drop-user">
+                            <i class="material-icons">person</i>
+                        </a></li>
+                    <ul id="drop-user" class="dropdown-content">
+                        <li><a href="#">Salir</a></li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</nav>
+
+<div class="content">
+    ${content}
+</div>
+
+`};
+
+},{}],10:[function(require,module,exports){
 var page = require('page');
 var template = require('./template');
 
@@ -1260,13 +1300,13 @@ var main = document.getElementById('main-container');
 page('/signin', function(ctx, next){
     main.innerHTML = template;
 });
-},{"./template":10,"page":2}],10:[function(require,module,exports){
+},{"./template":11,"page":2}],11:[function(require,module,exports){
 var landing = require('../landing');
 
 var signinForm = `<div class="col s12 m7">
 <div class="row">
     <div class="signup-box">
-        <h1 class="platzigram">Platzigram</h1>
+        <h1 class="platzigram"><a href="/">Platzigram</a></h1>
         <form class="signup-form"> 
             <div class="section">
                 <a class="btn btn-fb hide-on-small-only">Iniciar sesión con Facebook</a>
@@ -1290,7 +1330,7 @@ var signinForm = `<div class="col s12 m7">
 `;
 
 module.exports = landing(signinForm);
-},{"../landing":8}],11:[function(require,module,exports){
+},{"../landing":8}],12:[function(require,module,exports){
 var page = require('page');
 var template = require('./template');
 
@@ -1299,13 +1339,13 @@ var main = document.getElementById('main-container');
 page('/signup', function(ctx, next){
     main.innerHTML = template;
 });
-},{"./template":12,"page":2}],12:[function(require,module,exports){
+},{"./template":13,"page":2}],13:[function(require,module,exports){
 var landing = require('../landing');
 
 var signupForm = `<div class="col s12 m7">
 <div class="row">
   <div class="signup-box">
-    <h1 class="platzigram">Platzigram</h1>
+    <h1 class="platzigram"><a href="/">Platzigram</a></h1>
     <form class="signup-form">
       <h2>Regístrate para ver fotos de tus amigos estudiando en Platzi</h2>
       <div class="section">
