@@ -26,6 +26,4 @@ module.exports = function (content){
 
 <div class="content">
     ${content}
-</div>
-
-`};
+</div>`;}

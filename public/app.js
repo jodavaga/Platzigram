@@ -1213,26 +1213,54 @@ var template = require('./template');
 
 var main = document.getElementById('main-container');
 
+
+var pictures = [
+    {
+        user:{
+            username: 'jodavaga',
+            avatar: 'https://scontent.fclo1-2.fna.fbcdn.net/v/t1.0-9/1463583_10202803403108611_1605134411_n.jpg?oh=4819e49646472b68204247aa90843676&oe=5A4FCAD8'
+        },
+        url: 'office.jpg',
+        likes: 10,
+        liked: true
+    },
+
+    {
+        user:{
+            username: 'otroUser',
+            avatar: 'https://scontent.fclo1-2.fna.fbcdn.net/v/t1.0-9/1463583_10202803403108611_1605134411_n.jpg?oh=4819e49646472b68204247aa90843676&oe=5A4FCAD8'
+        },
+        url: 'office.jpg',
+        likes: 2,
+        liked: true
+    }
+    
+];
+
 page('/', function(ctx, next){
-    main.innerHTML = template;
+    main.innerHTML = template(pictures);
 });
 
 page();
 },{"./template":6,"page":2}],6:[function(require,module,exports){
 var layout = require('../layout');
+var picture = require('../picture-card');
 
-var template = `
+module.exports = function (pictures){
+var el = `
 <div class="container timeline">
     <div class="row">
         <div class="col s12 m7 offset-m2 l6 offset-l3">
-            aca van las cards
+            ${pictures.map(function(pic){
+                return picture(pic);
+            })}
         </div>
     </div>
-</div>
-`
+</div>`;
 
-module.exports = layout(template);
-},{"../layout":9}],7:[function(require,module,exports){
+ return layout(el);
+}
+},{"../layout":9,"../picture-card":10}],7:[function(require,module,exports){
 var page = require('page');
 
 
@@ -1241,7 +1269,7 @@ require('./signin/');
 require('./home');
 
 page();
-},{"./home":5,"./signin/":10,"./signup":12,"page":2}],8:[function(require,module,exports){
+},{"./home":5,"./signin/":11,"./signup":13,"page":2}],8:[function(require,module,exports){
 module.exports = function landing(box){
   return  `
     <div class="container m-top">
@@ -1287,11 +1315,29 @@ module.exports = function (content){
 
 <div class="content">
     ${content}
-</div>
-
-`};
+</div>`;}
 
 },{}],10:[function(require,module,exports){
+module.exports = function(pic){
+   return `<div class="card">
+    <div class="card-image">
+        <img class="activator" src="${pic.url}">
+    </div>
+    <div class="card-content">
+        <small class="right time"> Hace 1 dia</small>
+        <a href="/user/${pic.user.username}" class="card-title">
+            <img class="avatar" src="${pic.user.avatar}"/>
+            <span class="username"> ${pic.user.username} </span>
+        </a>
+        
+        <p>
+            <a href="#" class="left"><i class="material-icons">favorite_border</i></a>
+            <span class="left likes">${pic.likes} me gusta </span>
+        </p>
+    </div>  
+</div>`;
+}
+},{}],11:[function(require,module,exports){
 var page = require('page');
 var template = require('./template');
 
@@ -1300,7 +1346,7 @@ var main = document.getElementById('main-container');
 page('/signin', function(ctx, next){
     main.innerHTML = template;
 });
-},{"./template":11,"page":2}],11:[function(require,module,exports){
+},{"./template":12,"page":2}],12:[function(require,module,exports){
 var landing = require('../landing');
 
 var signinForm = `<div class="col s12 m7">
@@ -1330,7 +1376,7 @@ var signinForm = `<div class="col s12 m7">
 `;
 
 module.exports = landing(signinForm);
-},{"../landing":8}],12:[function(require,module,exports){
+},{"../landing":8}],13:[function(require,module,exports){
 var page = require('page');
 var template = require('./template');
 
@@ -1339,7 +1385,7 @@ var main = document.getElementById('main-container');
 page('/signup', function(ctx, next){
     main.innerHTML = template;
 });
-},{"./template":13,"page":2}],13:[function(require,module,exports){
+},{"./template":14,"page":2}],14:[function(require,module,exports){
 var landing = require('../landing');
 
 var signupForm = `<div class="col s12 m7">
